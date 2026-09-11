@@ -1,0 +1,6 @@
+pypdf
+PyMuPDF
+pdf2docx
+pymupdf4llm
+PySide6
+python-docx

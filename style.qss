@@ -1,0 +1,207 @@
+QMainWindow {
+    background-color: #FAFAFA;
+}
+
+/* --- BASE LABEL FIX ---
+   Any plain QLabel (like "Image DPI", "N =", "Convert to:") had no color
+   rule before, so it silently inherited a white system default and vanished
+   on the white card background. This single rule catches every label. */
+QLabel {
+    color: #0F0D0D;
+    font-size: 13px;
+}
+
+QTabWidget::pane {
+    border: none;
+    background-color: #FAFAFA;
+}
+
+QTabBar::tab {
+    background-color: #FFFFFF;
+    color: #0F0D0D;
+    padding: 10px 24px;
+    margin-right: 4px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+QTabBar::tab:selected {
+    background-color: #4C4899;
+    color: #FFFFFF;
+}
+
+QTabBar::tab:hover {
+    background-color: #E1B9C4;
+    color: #0F0D0D;
+}
+
+QWidget#Card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+}
+
+/* These two override the base QLabel rule above because ID selectors
+   are more specific than type selectors — order in the file doesn't matter. */
+QLabel#Title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0F0D0D;
+}
+
+QLabel#Subtitle {
+    font-size: 12px;
+    color: #9B9999;
+}
+
+QLabel#StatusLabel {
+    font-size: 12px;
+    color: #9B9999;
+}
+
+QPushButton {
+    background-color: #4C4899;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+QPushButton:hover { background-color: #3d3a7a; }
+QPushButton:pressed { background-color: #2f2d5e; }
+QPushButton:disabled { background-color: #C9C7E0; color: #F0F0F0; }
+
+QPushButton#SecondaryButton {
+    background-color: #FAFAFA;
+    color: #0F0D0D;
+    border: 1.5px solid #9B9999;
+}
+QPushButton#SecondaryButton:hover {
+    background-color: #E1B9C4;
+    border-color: #E1B9C4;
+}
+
+/* Default file list styling (used as a fallback / for non-thumbnail lists) */
+QListWidget {
+    background-color: #FAFAFA;
+    border: 2px dashed #E1B9C4;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 13px;
+    color: #0F0D0D;
+}
+
+QListWidget::item {
+    padding: 8px;
+    border-radius: 8px;
+    margin: 2px 0px;
+}
+
+QListWidget::item:selected {
+    background-color: #E1B9C4;
+    color: #0F0D0D;
+}
+
+/* Thumbnail grids (Merge file list + Split page preview) — solid white
+   card look instead of the dashed drop-zone style, since these are full
+   of visual content (page snippets) rather than empty placeholder text. */
+QListWidget#PdfFileList, QListWidget#ThumbList {
+    background-color: #FFFFFF;
+    border: 1.5px solid #E1E1E1;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+QListWidget#PdfFileList::item, QListWidget#ThumbList::item {
+    background-color: #FAFAFA;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 4px;
+    color: #0F0D0D;
+}
+
+QListWidget#PdfFileList::item:selected, QListWidget#ThumbList::item:selected {
+    background-color: #E1B9C4;
+    border: 2px solid #4C4899;
+}
+
+QLineEdit {
+    background-color: #FAFAFA;
+    border: 1.5px solid #E1E1E1;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 13px;
+    color: #0F0D0D;
+}
+QLineEdit:focus { border-color: #4C4899; }
+
+QComboBox {
+    background-color: #FAFAFA;
+    border: 1.5px solid #E1E1E1;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 13px;
+    color: #0F0D0D;
+}
+QComboBox:hover { border-color: #4C4899; }
+
+QComboBox::drop-down {
+    border: none;
+    width: 24px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #0F0D0D;
+    border: 1.5px solid #4C4899;
+    border-radius: 8px;
+    padding: 6px;
+    outline: none;
+    selection-background-color: #4C4899;
+    selection-color: #FFFFFF;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px 10px;
+    border-radius: 6px;
+    min-height: 24px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #E1B9C4;
+    color: #0F0D0D;
+}
+
+QSpinBox {
+    background-color: #FAFAFA;
+    border: 1.5px solid #E1E1E1;
+    border-radius: 8px;
+    padding: 6px;
+    color: #0F0D0D;
+}
+
+QRadioButton {
+    font-size: 13px;
+    color: #0F0D0D;
+    padding: 4px;
+}
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QProgressBar {
+    background-color: #F0F0F0;
+    border: none;
+    border-radius: 8px;
+    height: 14px;
+    text-align: center;
+    font-size: 10px;
+    color: #0F0D0D;
+}
+QProgressBar::chunk {
+    background-color: #4C4899;
+    border-radius: 8px;
+}
