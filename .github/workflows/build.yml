@@ -1,0 +1,35 @@
+name: Build Portable App
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build with PyInstaller
+        run: |
+          pyinstaller --name "PDFToolkit" --windowed --onedir --add-data "style.qss;." --hidden-import=pymupdf --hidden-import=pymupdf4llm --hidden-import=pdf2docx main.py
+
+      - name: Zip the build
+        run: |
+          Compress-Archive -Path dist/PDFToolkit -DestinationPath PDFToolkit-${{ github.ref_name }}.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: PDFToolkit-${{ github.ref_name }}.zip
