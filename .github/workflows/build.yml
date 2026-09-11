@@ -1,5 +1,8 @@
 name: Build Portable App
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -23,7 +26,15 @@ jobs:
 
       - name: Build with PyInstaller
         run: |
-          pyinstaller --name "PDFToolkit" --windowed --onedir --add-data "style.qss;." --hidden-import=pymupdf --hidden-import=pymupdf4llm --hidden-import=pdf2docx main.py
+          pyinstaller --name "PDFToolkit" --windowed --onedir `
+            --add-data "style.qss;." `
+            --hidden-import=pymupdf `
+            --hidden-import=pymupdf4llm `
+            --hidden-import=pdf2docx `
+            --collect-all=pymupdf `
+            --collect-all=pymupdf4llm `
+            --collect-all=onnxruntime `
+            main.py
 
       - name: Zip the build
         run: |
